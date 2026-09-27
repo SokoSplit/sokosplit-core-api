@@ -23,6 +23,7 @@ func main() {
 	splitHandler := handlers.NewSplitListHandler(conn, bus)
 
 	r := gin.Default()
+	r.Use(handlers.CORSMiddleware())
 
 	r.GET("/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{"status": "ok"})
